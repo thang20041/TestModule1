@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+//    Bài 1: Cho danh sách các điểm thi ở trong một mảng
+//    Hãy viết hàm tìm được điểm thi cao thứ 3 với đầu vào là một
+//    mảng điểm. (không dùng hàm có sẵn để sắp xếp).
+
+   let arr = [7,8,9,8,5,7,6]
+   function checkMax3(arr) {
+       let max1 = -Infinity;
+       let max2 = -Infinity;
+       let max3 = -Infinity;
+
+       for (let i = 0; i < arr.length; i++) {
+           if (arr[i] > max1) {
+               max3 = max2;
+               max2 = max1;
+               max1 =arr[i];
+           } else if (arr[i] > max2 && arr[i] !== max1) {
+               max3 = max2;
+               max2 = arr[i];
+           } else if (arr[i] > max3 && arr[i] !== max2 && arr[i] !== max1) {
+               max3 = arr[i];
+           }
+       }
+
+       return max3;
+   }
+
+   console.log(checkMax3(arr))
+
+// Bài 2: Viết hàm tryRemoveFromArray() nhận vào tham số là một
+// mảng và một số nguyên index, trả về mảng ban đầu đã được
+// loại bỏ phần tử tại vị trí index nếu index hợp lệ. Nếu index
+// không hợp lệ, trả về mảng ban đầu.
+// (không dùng hàm có sẵn để xóa mảng)
+
+    let arr10 = [1,2,3,6,5,8,7,10];
+    let b = 3
+    function tryRemoveFromArray(arr10,b) {
+        let c = [];
+        if (b < 0 || b > arr10.length) {
+            return arr10;
+        }
+        for (let i = 0; i < arr10.length; i++) {
+            if (i === b) {
+                continue;
+            }
+            c[(c.length)] = arr10[i]
+        }
+        return c;
+    }
+        console.log(tryRemoveFromArray(arr10,b));
+
+
+
+// Câu 3
+// Viết hàm kiểm tra xem 1 chuỗi có nằm trong chuỗi còn lại
+// không. Với đầu vào là 2 chuỗi (str1,str2) trong đó sẽ kiểm tra
+// str1 có nằm trong str2 không, nếu có trả về true và ngược lại
+// false. (không được dùng hàm có sẵn để tìm)
+
+
+let str1 = "abc"
+let str2 = "abcdfgh"
+function isSubstring(str1, str2) {
+    for (let i = 0; i <= str2.length - str1.length; i++) {
+        let j;
+        for ( j = 0; j < str1.length; j++) {
+            if (str2[i + j] !== str1[j]) {
+                break;
+            }
+        }
+        if (j === str1.length) {
+            return true;
+        }
+    }
+    return false;
+}
+
+console.log(isSubstring(str1,str2));
+
+
+class Rectangle {
+    constructor(x, y, width, height, color) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+
+    render(canvas) {
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
+
+const canvas = document.createElement("canvas");
+canvas.width = 400;
+canvas.height = 300;
+document.body.appendChild(canvas);
+
+const rect = new Rectangle(10, 10, 200, 100, "#FFC0CB");
+rect.render(canvas);
+
+
+
+
+
+</script>
+</body>
+</html>
